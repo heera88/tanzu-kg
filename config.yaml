@@ -1,0 +1,50 @@
+cert-manager-timeout: 30m0s
+NODE_STARTUP_TIMEOUT: 20m
+BASTION_HOST_ENABLED: "true"
+providers:
+  - name: cluster-api
+    url: ~/.tkg/providers/cluster-api/v0.3.10/core-components.yaml
+    type: CoreProvider
+  - name: aws
+    url: ~/.tkg/providers/infrastructure-aws/v0.5.5/infrastructure-components.yaml
+    type: InfrastructureProvider
+  - name: vsphere
+    url: ~/.tkg/providers/infrastructure-vsphere/v0.7.1/infrastructure-components.yaml
+    type: InfrastructureProvider
+  - name: azure
+    url: ~/.tkg/providers/infrastructure-azure/v0.4.8/infrastructure-components.yaml
+    type: InfrastructureProvider
+  - name: tkg-service-vsphere
+    url: ~/.tkg/providers/infrastructure-tkg-service-vsphere/v1.0.0/unused.yaml
+    type: InfrastructureProvider
+  - name: kubeadm
+    url: ~/.tkg/providers/bootstrap-kubeadm/v0.3.10/bootstrap-components.yaml
+    type: BootstrapProvider
+  - name: kubeadm
+    url: ~/.tkg/providers/control-plane-kubeadm/v0.3.10/control-plane-components.yaml
+    type: ControlPlaneProvider
+  - name: docker
+    url: ~/.tkg/providers/infrastructure-docker/v0.3.10/infrastructure-components.yaml
+    type: InfrastructureProvider
+images:
+    all:
+        repository: registry.tkg.vmware.run/cluster-api
+    cert-manager:
+        repository: registry.tkg.vmware.run/cert-manager
+        tag: v0.16.1_vmware.1
+release:
+    version: v1.2.0
+VSPHERE_SERVER: ""
+VSPHERE_USERNAME: ""
+VSPHERE_PASSWORD: ""
+VSPHERE_DATACENTER: ""
+VSPHERE_DATASTORE: ""
+VSPHERE_NETWORK: ""
+VSPHERE_RESOURCE_POOL: "tkg"
+VSPHERE_FOLDER: "tkg"
+VSPHERE_DISK_GIB: "40"
+VSPHERE_NUM_CPUS: "4"
+VSPHERE_MEM_MIB: "4096"
+VSPHERE_SSH_AUTHORIZED_KEY: ""
+SERVICE_CIDR: "100.64.0.0/13"
+CLUSTER_CIDR: "100.96.0.0/11"
